@@ -1,0 +1,15 @@
+{
+  "development": {
+    "username": "Skindetafenbolle",
+    "password": "LkyWGYxH8D0b",
+    "database": "zpark",
+    "host": "ep-odd-hat-a55kar3v.us-east-2.aws.neon.tech",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}

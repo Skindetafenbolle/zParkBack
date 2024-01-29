@@ -1,23 +1,12 @@
-// models/duplicatedFeedback.js
 import { Sequelize, DataTypes } from 'sequelize';
-import Feedback from './feedback.js';
-
-const sequelize = new Sequelize('postgresql://Skindetafenbolle:LkyWGYxH8D0b@ep-odd-hat-a55kar3v.us-east-2.aws.neon.tech/zpark?sslmode=require', {
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false, 
-    },
-  },
-});
+import { sequelize } from '../config/dbConnect.js';
 
 const DuplicatedFeedback = sequelize.define('DuplicatedFeedback', {
   name: {
     type: DataTypes.STRING,
   },
   date: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
   },
   name_kid: {
     type: DataTypes.STRING,
@@ -36,7 +25,7 @@ const DuplicatedFeedback = sequelize.define('DuplicatedFeedback', {
   },
   counter: {
     type: DataTypes.INTEGER,
-    defaultValue: 1, // начальное значение счетчика
+    defaultValue: 1, 
   },
   monthlyCounter: {
     type: DataTypes.INTEGER,
@@ -44,14 +33,13 @@ const DuplicatedFeedback = sequelize.define('DuplicatedFeedback', {
   },
   formSource: {
     type: DataTypes.STRING,
-    defaultValue: 'Site', // Устанавливаем значение "Form site" по умолчанию
+    defaultValue: 'Site', 
   },
   
 }, {
-  tableName: 'DuplicatedFeedback', // явно указываем имя таблицы
+  tableName: 'DuplicatedFeedback', 
 });
 
-// Добавляем связь к объекту sequelize
 DuplicatedFeedback.sequelize = sequelize;
 
 export default DuplicatedFeedback;

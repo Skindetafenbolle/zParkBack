@@ -1,15 +1,5 @@
-// feedbackModel.js
 import { Sequelize, DataTypes } from 'sequelize';
-
-const sequelize = new Sequelize('postgresql://Skindetafenbolle:LkyWGYxH8D0b@ep-odd-hat-a55kar3v.us-east-2.aws.neon.tech/zpark?sslmode=require', {
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false, 
-    },
-  },
-});
+import { sequelize } from '../config/dbConnect.js';
 
 const Feedback = sequelize.define('Feedbacks', {
   id: {
@@ -23,7 +13,7 @@ const Feedback = sequelize.define('Feedbacks', {
     allowNull: false,
   },
   date: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   name_kid: {
@@ -50,8 +40,8 @@ const Feedback = sequelize.define('Feedbacks', {
   },
   formSource: {
     type: DataTypes.STRING,
-    defaultValue: 'Form site', // Устанавливаем значение "Form site" по умолчанию
+    defaultValue: 'Site',
   },
-},);
+});
 
 export default Feedback;

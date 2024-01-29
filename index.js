@@ -49,11 +49,13 @@ const adminJsOptions = {
                   name: { isVisible: { list: true, show: true, edit: true, filter: true } },
                   date: { isVisible: { list: true, show: true, edit: true, filter: true } },
                   name_kid: { isVisible: { list: true, show: true, edit: true, filter: true } },
+                  age_kid: { isVisible: { list: true, show: true, edit: true, filter: true } },
                   count_kid: { isVisible: { list: true, show: true, edit: true, filter: true } },
                   number: { isVisible: { list: true, show: true, edit: true, filter: true } },
                   isOpen: { isVisible: { list: true, show: true, edit: true } },
                   formSource: { isVisible: { list: true, show: true, edit: true, filter: true } },
                   id: { isVisible: false },
+                  updatedAt: { isVisible: false },
               },
               actions: {
                   show: {
@@ -82,6 +84,7 @@ const adminJsOptions = {
             name: { isVisible: true },
             date: { isVisible: true },
             name_kid: { isVisible: true },
+            age_kid: { isVisible: true },
             count_kid: { isVisible: true },
             number: { isVisible: true },
             isOpen: { isVisible: true },
@@ -151,8 +154,10 @@ app.post('/sendFeedback', express.json(), async (req, res) => {
         name: formData.name,
         date: formData.date,
         name_kid: formData.name_kid,
+        age_kid: formData.age_kid,
         count_kid: formData.count_kid,
         number: formData.number,
+        formSource: formData.formSource,
       });
 
       await feedbackEntry.update({ isOpen: false });
@@ -161,11 +166,13 @@ app.post('/sendFeedback', express.json(), async (req, res) => {
         name: formData.name,
         date: formData.date,
         name_kid: formData.name_kid,
+        age_kid: formData.age_kid,
         count_kid: formData.count_kid,
         number: formData.number,
         isOpen: false,
         counter: 1,
         monthlyCounter: 1,
+        formSource: formData.formSource,
       });
     }
 
@@ -178,9 +185,9 @@ app.post('/sendFeedback', express.json(), async (req, res) => {
 
 
 app.post('/send-message', (req, res) => {
-  const { count_kid, date, name, name_kid, number } = req.body;
+  const { count_kid, date, name, age_kid, name_kid, number, formSource } = req.body;
 
-  const text = `**Новая бронь** \nИмя: ${name}\nНомер телефона: ${number}\nКоличество детей: ${count_kid}\nИмя ребенка: ${name_kid}\nДата: ${date}`
+  const text = `**Новая бронь** \nИмя: ${name}\nНомер телефона: ${number}\nКоличество детей: ${count_kid}\nИмя ребенка: ${name_kid}\nВозраст ребенка: ${age_kid}\nДата: ${date}\nЗабронированно: ${formSource}`
 
   bot.sendMessage('-1002050314832', text);
 

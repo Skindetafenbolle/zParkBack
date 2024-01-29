@@ -25,6 +25,9 @@ const DuplicatedFeedback = sequelize.define('DuplicatedFeedback', {
   count_kid: {
     type: DataTypes.INTEGER,
   },
+  age_kid: {
+    type: DataTypes.INTEGER,
+  },
   number: {
     type: DataTypes.STRING,
   },
@@ -41,8 +44,9 @@ const DuplicatedFeedback = sequelize.define('DuplicatedFeedback', {
   },
   formSource: {
     type: DataTypes.STRING,
-    defaultValue: 'Form site', // Устанавливаем значение "Form site" по умолчанию
+    defaultValue: 'Site', // Устанавливаем значение "Form site" по умолчанию
   },
+  
 }, {
   tableName: 'DuplicatedFeedback', // явно указываем имя таблицы
 });

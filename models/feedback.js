@@ -30,6 +30,9 @@ const Feedback = sequelize.define('Feedbacks', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  age_kid: {
+    type: DataTypes.INTEGER,
+  },
   count_kid: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -49,8 +52,6 @@ const Feedback = sequelize.define('Feedbacks', {
     type: DataTypes.STRING,
     defaultValue: 'Form site', // Устанавливаем значение "Form site" по умолчанию
   },
-}, {
-  timestamps: false,
-});
+},);
 
 export default Feedback;

@@ -1,5 +1,5 @@
 export function sendFeedbackToServer(feedbackData) {
-    const serverUrl = 'https://zparkbackend.onrender.com/sendFeedback';
+  const serverUrl = 'https://zparkbackend.onrender.com/sendFeedback';
   
     fetch(serverUrl, {
       method: 'POST',

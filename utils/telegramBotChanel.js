@@ -12,6 +12,6 @@ bot.onText(/\/start/, (msg) => {
 });
 
 export function sendMessageToChannel({ count_kid, date, name, age_kid, name_kid, number, formSource }) {
-  const text = `**Новая бронь** \nИмя: ${name}\nНомер телефона: ${number}\nКоличество детей: ${count_kid}\nИмя ребенка: ${name_kid}\nВозраст ребенка: ${age_kid}\nДата: ${date}\nЗабронировано: ${formSource}`;
+  const text = `**Новая бронь** \nИмя: ${name}\nНомер телефона: ${number}\nИмя именинника: ${name_kid}\nЛет исполняется: ${age_kid}\nКоличество детей: ${count_kid}\nДата: ${date}\nЗабронировано: ${formSource}`;
   bot.sendMessage('-1002050314832', text);
 }

@@ -31,7 +31,7 @@ const Feedback = sequelize.define('Feedbacks', {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      is: /^\+[0-9]+$/,
+      is: /^[\d\+\-\(\) ]+$/,
     },
   },
   isOpen: {

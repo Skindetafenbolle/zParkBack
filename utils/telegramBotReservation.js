@@ -1,7 +1,11 @@
 import { Telegraf } from 'telegraf';
 import { sendFeedbackToServer, sendFeedbackToChanel } from './telegramPost.js';
+import dotenv from 'dotenv';
 
-const telegramBotReservation = new Telegraf('6951241854:AAEN11t-rwcxfN77P0vfCaXqAcrhKpsD14Q');
+dotenv.config();
+
+const token = process.env.TELEGRAM_RESERVATION;
+const telegramBotReservation = new Telegraf(token);
 
 const userData = {};
 

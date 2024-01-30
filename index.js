@@ -7,7 +7,10 @@ import { configureAdminRoutes } from './routes/adminRoutes.js';
 import { configureFeedbackRoutes } from './routes/feedbackRoutes.js';
 import { configureTelegramChanelRoutes } from './routes/telegramChanelroutes.js';
 import telegramBotReservation from './utils/telegramBotReservation.js'; 
+import dotenv from 'dotenv';
 
+
+dotenv.config();
 const app = express();
 
 app.use(express.json());

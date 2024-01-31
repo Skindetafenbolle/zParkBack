@@ -3,7 +3,6 @@ import { Op } from 'sequelize';
 import { startOfMonth, parseISO } from 'date-fns';
 import Feedback from '../models/feedback.js';
 import DuplicatedFeedback from '../models/duplicateFeedback.js';
-import notifier from 'node-notifier'
 
 export function configureFeedbackRoutes() {
   const router = express.Router();
@@ -58,13 +57,6 @@ export function configureFeedbackRoutes() {
             formSource: formData.formSource,
           });
         }
-        
-        notifier.notify({
-          title: 'Новая заявка',
-          message: `Имя: ${formData.name}, Дата: ${formData.date}, Имя ребенка: ${formData.name_kid}, Возраст ребенка: ${formData.age_kid}, Количество детей: ${formData.count_kid}, Номер телефона: ${formData.number}, Источник: ${formData.formSource}`,
-          sound: true,
-          wait: true,
-        });
 
         res.status(200).json({ success: true });
       } catch (error) {

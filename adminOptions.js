@@ -1,6 +1,7 @@
 import { Op } from "sequelize";
 import Feedback from "./models/feedback.js";
 import DuplicatedFeedback from "./models/duplicateFeedback.js";
+import Subscription from "./models/Subscription.js";
 import { startOfMonth, isAfter, parseISO } from "date-fns";
 
 
@@ -11,7 +12,7 @@ export const adminJsOptions = {
     branding: {
       companyName: 'Zpark dashboard',
       softwareBrothers: false, 
-      logo: 'https://nimble-lollipop-df2fcd.netlify.app/img/logo-removebg-cut.png',
+      logo: 'https://z-park.netlify.app/img/logo-removebg-cut.webp',
     },
     resources: [
         {
@@ -82,6 +83,34 @@ export const adminJsOptions = {
             name: 'Zpark',
           },
           },
+        },
+        {
+            resource: Subscription,
+            options: {
+                properties: {
+                    email: { isVisible: { list: true, show: true, edit: true, filter: true } },
+                    id: { isVisible: false },
+                    updatedAt: { isVisible: false },
+                },
+                actions: {
+                    show: {
+                        after: async (response, request, context) => {
+                            const record = context.record;
+                            if (record.params.isOpen === false) {
+                                await record.update({ isOpen: true });
+                                console.log(`Поле isOpen для записи с ID ${record.param('id')} обновлено на true`);
+                            }
+  
+                            return {
+                                record: record.toJSON(context.currentAdmin),
+                            };
+                        },
+                    },
+                },
+                parent: {
+                  name: 'Emails',
+                },
+            },
         },
     ],
     rootPath: '/admin',
